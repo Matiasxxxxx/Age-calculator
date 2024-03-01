@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 70%, 44%); }
+ body{
+  background-color: hsl(0, 0%, 94%);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400i, 700, 800i;
+
+
+ }
+ .container {
+  display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+    }
+ .panel{
+  background-color: hsl(0, 0%, 100%);
+      width: 550px;
+      height: 500px;
+      border-radius: 3%;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-bottom-right-radius: 20%;
+
+ }
+#dzien, #miesiac, #rok
+{
+  font-weight:600;
+  height:5vh;
+  width: 10vh;
+  border-radius: 5%;
+  color:hsl(0, 0%, 8%);
+  font-size: 21px;
+  text-align:left;
+  padding-left: 10px;
+  margin:auto;
+  border-color: hsl(0, 1%, 44%);
+ 
+
+
+}
+#dzien:focus, #miesiac:focus, #rok:focus
+{
+  border: 1px solid hsl(259, 100%, 65%);
+
+} 
+#dzien:hover, #miesiac:hover, #rok:hover
+{
+  border-color: hsl(259, 100%, 65%);
+}
+hr {
+  border: none;
+  border-top: 2px solid hsl(0, 0%, 86%);
+  margin-left: 3% ;
+}
+
+.gora
+{
+  width:100%;
+  height: 11vh;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.glewy
+{
+  width: 27%;
+  float: left;
+  color:hsl(0, 1%, 44%);
+}
+.gprawy
+{
+  width: 27%;
+  float: left;
+  color:hsl(0, 1%, 44%);
+
+}
+.ggprawy
+{
+  width: 27%;
+  float: left;
+  color:hsl(0, 1%, 44%);
+
+}
+#dzien::placeholder, #miesiac::placeholder, #rok::placeholder
+{
+  color:hsl(0, 1%, 44%);
+  font-size: 32px;
+  text-align:left;
+ 
+  border-color: hsl(259, 100%, 65%);
+
+}
+.slewy
+{width:80%;
+  float:left;}
+  .sprawy{float: left;
+    flex-grow: 1; /* Rozciągnięcie elementu na całą dostępną przestrzeń */
+    text-align: center;
+button{ 
+  border-radius: 100%;
+  background-color: hsl(259, 100%, 65%);
+  border-color: hsl(259, 100%, 65%);
+  box-shadow: 20px;
+  width: 80px; 
+  height: 80px;
+}button:hover{ 
+  background-color: hsl(0, 0%, 8%);
+  border-color: hsl(0, 0%, 8%);
+}
+
+img{margin:4px;}
+  }
+  .dol
+  {
+    margin-left: 7%;
+    flex-direction: row;
+    width:90%;
+    
+  }
+
+#roczek::after, #miesiacc::after, #dzionek::after {
+
+    color: black;
+    font-size: 70px;
+    font-weight: bolder;
+    font-style: italic;
+}
+#roczek::after
+{
+  content: " years";
+}
+#miesiacc::after{content: " months";}
+#dzionek::after{content: " days";}
+.myslnik
+{
+  color: hsl(259, 100%, 65%);
+  
+
+}
+
+.przycisk {
+  border-radius: 100%;
+  background-color: hsl(259, 100%, 65%);
+  border-color: hsl(259, 100%, 65%);
+  box-shadow: 20px;
+  width: 60px; 
+  height: 60px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.purple
+{
+  margin: 0; 
+  padding: 0;
+  color: hsl(259, 100%, 65%);
+  font-size: 70px;
+  font-style: italic;
+    
+}
+.italic {
+  font-style: italic;
+}
+#dzionek, #miesiacc, #roczek {
+    color: hsl(259, 100%, 65%);
+    font-size: 70px;
+    font-weight: bolder;
+    margin: 0; 
+    padding: 0;
+    font-style: italic;
+
+
+    
+}
+#day-error{color:red;}
+ #month-error{color:red;}
+ #year-error{color:red;}
+i{font-size: 32px; font-style: italic;} 
+
+ </style>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="gora">
+        <div class="glewy">
+         <b> DAY</b>
+          <br>
+          <input type="text" id="dzien" placeholder="DD" maxlength="2">
+          <div id="day-error"></div>
+        </div>
+        <div class="gprawy">
+         <b> MONTH</b>
+          <br>
+          <input type="text" id="miesiac" placeholder="MM" maxlength="2">
+          <div id="month-error"></div>
+        </div><div class = "ggprawy">
+        <b>YEAR</b>
+        <br>
+        <input type="text" id="rok" placeholder="YYYY" maxlength="4">
+        <div id="year-error"></div>
+      </div></div>
+      <div class="slewy">
+        <hr>
+      </div>
+      <div class="sprawy">
+        <button class="przycisk" onclick="licz()">
+          <img src="assets/images/icon-arrow.svg" alt="Przycisk z obrazkiem">
+        </button>
+      </div>
+      <div class="dol">
+        <p id="roczek"><i class="purple">- - </i></p>
+
+        <p id="miesiacc"><i class="purple">- - </i></p>
+
+        <p id="dzionek"><i class="purple">- - </i></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    function licz() {
+      var dzien = parseInt(document.getElementById("dzien").value);
+      var miesiac = parseInt(document.getElementById("miesiac").value);
+      var rok = document.getElementById("rok").value;
+
+      if (!/^\d+$/.test(rok)) {
+        document.getElementById("year-error").textContent = "Invalid year";
+        document.getElementById("rok").style.borderColor = "red";
+        return;
+      }
+      document.getElementById("rok").style.borderColor = "";
+      rok = parseInt(rok);
+
+      var currentDate = new Date();
+      if (rok > currentDate.getFullYear()) {
+        document.getElementById("year-error").textContent = "Must be in the past";
+        document.getElementById("rok").style.borderColor = "red";
+        document.querySelector(".ggprawy").style.color = "red";
+        return;
+      }
+      document.getElementById("year-error").textContent = "";
+
+      var date = new Date(rok, miesiac - 1, dzien);
+      if (
+        date.getDate() !== dzien ||
+        date > new Date() ||
+        dzien > new Date(rok, miesiac - 1, 0).getDate() ||
+        miesiac > 12
+      ) {
+        if (date > new Date()) {
+          document.getElementById("year-error").textContent = "Must be in the past";
+          document.getElementById("rok").style.borderColor = "red";
+          document.querySelector(".ggprawy").style.color = "red";
+        } else {
+          if (dzien > new Date(rok, miesiac - 1, 0).getDate()) {
+            document.getElementById("day-error").textContent = "Must be a valid day";
+            document.getElementById("dzien").style.borderColor = "red";
+            document.querySelector(".glewy").style.color = "red"; 
+          } else {
+            document.getElementById("day-error").textContent = "";
+            document.getElementById("dzien").style.borderColor = "";
+            document.querySelector(".ggprawy").style.color = "";
+            
+          }
+          if (miesiac > 12) {
+            document.getElementById("month-error").textContent = "Must be a valid month";
+            document.getElementById("miesiac").style.borderColor = "red";
+            document.querySelector(".gprawy").style.color = "red";
+          } else {
+            document.getElementById("month-error").textContent = "";
+            document.getElementById("miesiac").style.borderColor = "";
+          }
+        }
+      } else {
+        document.getElementById("day-error").textContent = "";
+        document.getElementById("month-error").textContent = "";
+        document.getElementById("year-error").textContent = "";
+        document.getElementById("dzien").style.borderColor = "";
+        document.getElementById("miesiac").style.borderColor = "";
+        document.getElementById("rok").style.borderColor = "";
+        document.querySelector(".gprawy").style.color = "";
+        document.querySelector(".glewy").style.color = ""; 
+        document.querySelector(".ggprawy").style.color = ""; 
+
+        var DataUr = new Date(rok, miesiac - 1, dzien);
+        var ageInMilliseconds = currentDate - DataUr;
+        var DataRok = currentDate.getFullYear() - DataUr.getFullYear();
+        var DataMies = currentDate.getMonth() - DataUr.getMonth();
+        var DataDzien = currentDate.getDate() - DataUr.getDate();
+
+        if (DataMies < 0 || (DataMies === 0 && currentDate.getDate() < DataUr.getDate())) {
+          DataRok--;
+          DataMies += 12;
+        }
+        if (DataDzien < 0) {
+          DataMies--;
+          var daysInLastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+          DataDzien += daysInLastMonth;
+        }
+
+        document.getElementById("roczek").innerHTML = '<i class="purple">' + DataRok + '</i>';
+        document.getElementById("miesiacc").innerHTML = '<i class="purple">' + DataMies + '</i>';
+        document.getElementById("dzionek").innerHTML = '<i class="purple">' + DataDzien + '</i>';
+      }
+    }
+  </script>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Mati</a>.
+  </div>
+</body>
+</html>
